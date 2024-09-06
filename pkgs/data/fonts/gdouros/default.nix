@@ -1,6 +1,9 @@
 { lib, stdenvNoCC, fetchzip }:
 
 let
+  web-archive-date = "20240212172059";
+  base-url = "https://dn-works.com/wp-content/uploads/2020/UFAS-Fonts";
+
   fonts = {
     aegan     = { version = "13.00"; file = "Aegean.zip";       hash = "sha256-3HmCqCMZLN6zF1N/EirQOPnHKTGHoc4aHKoZxFYTB34="; description = "Aegean"; };
     aegyptus  = { version = "13.00"; file = "Aegyptus.zip";     hash = "sha256-SSAK707xhpsUTq8tSBcrzNGunCYad58amtCqAWuevnY="; description = "Egyptian Hieroglyphs, Coptic, Meroitic"; };
@@ -17,7 +20,7 @@ let
     inherit pname version;
 
     src = fetchzip {
-      url = "https://dn-works.com/wp-content/uploads/2020/UFAS-Fonts/${file}";
+      url = "https://web.archive.org/web/${web-archive-date}/${base-url}/${file}";
       stripRoot = false;
       inherit hash;
     };
